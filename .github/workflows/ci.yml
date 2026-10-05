@@ -41,6 +41,7 @@ jobs:
         with:
           images: shashank2002/nest-blog-app
           tags: |
+            type=ref,event=branch
             type=sha
 
       - name: Login to Docker Hub
