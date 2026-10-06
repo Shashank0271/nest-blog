@@ -17,4 +17,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DPAT }}
           repositories: 'nest-blog-app'
-          dry-run: true  # Set to true for testing
+          dry-run: false  # Set to true for testing
