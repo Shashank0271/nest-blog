@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: snok/container-retention-policy@v3.1.0
         with:
-          account: snok
+          account: shashank2002
           token: ${{ secrets.GITHUB_TOKEN }}
           image-names: 'nest-blog-app'
           # image-tags: 'test* dev*' # target any image that has a tag starting with the word test or dev
