@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push:
 
-permissions:
-  packages: write
 
 jobs:
   clean:
@@ -17,7 +15,7 @@ jobs:
         uses: snok/container-retention-policy@v3.1.0
         with:
           account: user
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           image-names: nest-blog-app
           cut-off: 1h
           dry-run: true
