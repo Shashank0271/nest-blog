@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nest-blog-app-config
+data:
+  NODE_ENV: development
+  DB_SYNC: 'false'
+  DB_AUTOLOAD: 'true'
+  ACCESS_TOKEN_TTL: 60m
+  REFRESH_TOKEN_TTL: 1d
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nest-blog-app-secrets
+type: Opaque
+stringData:
+  DB_URL: 'postgresql://neondb_owner:npg_5xeINR1Ycaqs@ep-holy-salad-b4vbmiza-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+  JWT_SECRET: 'jfadihandln24oy%@!$!$alfbk@%*&@%aljbflajf'

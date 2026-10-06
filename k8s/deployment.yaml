@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-blog-app
+  labels:
+    app: nest-blog-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nest-blog-app
+  template:
+    metadata:
+      labels:
+        app: nest-blog-app
+    spec:
+      containers:
+        - name: nest-blog-app
+          image: shashank2002/nest-blog-app:ci
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          envFrom:
+            - configMapRef:
+                name: nest-blog-app-config
+            - secretRef:
+                name: nest-blog-app-secrets
