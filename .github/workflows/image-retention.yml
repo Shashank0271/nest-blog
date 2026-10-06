@@ -8,6 +8,7 @@ on:
   #   - cron: '5 * * * *' # every hour
 permissions:
   packages: write
+  packages: delete
   
 jobs:
   clean:
