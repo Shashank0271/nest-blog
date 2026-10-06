@@ -1,21 +1,20 @@
-name: Container Retention Policy
-
+name: Docker Cleanup
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM UTC
+  workflow_dispatch:  # Allow manual trigger
   push:
 
-
 jobs:
-  clean:
+  cleanup:
     runs-on: ubuntu-latest
-    name: Delete old container images
-
     steps:
-      - name: Delete old container images
-        uses: snok/container-retention-policy@v3.1.0
+      - uses: actions/checkout@v4
+      
+      - name: Docker Hub Cleanup
+        uses: lostlink/docker-cleanup@v1
         with:
-          account: user
-          token: ${{ secrets.PAT }}
-          image-names: nest-blog-app
-          cut-off: 1h
-          dry-run: false
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repositories: 'nest-blog-app'
+          dry-run: true  # Set to true for testing
