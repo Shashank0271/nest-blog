@@ -15,6 +15,6 @@ jobs:
         uses: lostlink/docker-cleanup@v1.0.1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.PAT }}
           repositories: 'nest-blog-app'
           dry-run: true  # Set to true for testing
