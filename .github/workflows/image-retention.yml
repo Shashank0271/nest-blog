@@ -18,4 +18,4 @@ jobs:
           token: ${{ secrets.PAT }}
           image-names: nest-blog-app
           cut-off: 1h
-          dry-run: true
+          dry-run: false
