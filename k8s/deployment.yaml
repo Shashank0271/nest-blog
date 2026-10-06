@@ -18,6 +18,8 @@ spec:
         - name: nest-blog-app
           image: shashank2002/nest-blog-app:ci
           imagePullPolicy: Always
+          imagePullSecrets:
+            - name: nest-blog-pull
           ports:
             - name: http
               containerPort: 3000
