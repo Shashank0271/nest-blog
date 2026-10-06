@@ -6,7 +6,9 @@ on:
   # pull_request:
   # schedule:
   #   - cron: '5 * * * *' # every hour
-
+permissions:
+  packages: write
+  
 jobs:
   clean:
     runs-on: ubuntu-latest
