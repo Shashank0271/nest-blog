@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nest-blog-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nest-blog-app
@@ -20,7 +20,6 @@ spec:
         - name: nest-blog-app
           image: shashank2002/nest-blog-app:ci
           imagePullPolicy: Always
-
           ports:
             - name: http
               containerPort: 3000
