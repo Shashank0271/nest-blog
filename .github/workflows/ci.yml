@@ -61,8 +61,8 @@ jobs:
       - name: Build and push
         id: build-and-push
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 --tag "$DOCKERHUB_USERNAME/$IMAGE_NAME:${{ github.ref_name }}-${{ github.sha }}" --push .
-          echo "image=${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          docker buildx build --platform linux/amd64,linux/arm64 --tag "${{ secrets.DOCKERHUB_USERNAME }} / ${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" --push .
+          echo "image=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> "$GITHUB_OUTPUT"
 
   update-gitops:
     runs-on: ubuntu-latest
