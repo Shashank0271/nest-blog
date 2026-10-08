@@ -69,6 +69,10 @@ jobs:
     needs: docker-build-push
 
     steps:
+      - name: Show image
+        run: |
+          echo "New image ${{ needs.docker-build-push.outputs.image }}"
+          
       - name: Check out GitOps repository
         uses: actions/checkout@v4
         with:
