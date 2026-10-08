@@ -2,9 +2,9 @@ name: CI
 
 env:
   IMAGE_NAME: nest-blog-app
+  GITOPS_REPO_ORG: Shashank0271
   GITOPS_REPO_NAME: deploy-projects
   GITOPS_DEPLOYMENT_FILE_PATH: nest-blog-app/deployment.yaml
-  GITOPS_REPO_ORG: Shashank0271
 
 on:
   workflow_dispatch:
@@ -62,7 +62,7 @@ jobs:
         id: build-and-push
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 --tag "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" --push .
-          echo "image=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          echo "image=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> $GITHUB_OUTPUT
 
   update-gitops:
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ jobs:
       - name: Show image
         run: |
           echo "New image ${{ needs.docker-build-push.outputs.image }}"
-          
+
       - name: Check out GitOps repository
         uses: actions/checkout@v4
         with:
