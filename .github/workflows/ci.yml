@@ -73,7 +73,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ env.GITOPS_REPO_ORG }}/${{ env.GITOPS_REPO_NAME }}
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITOPS_PAT }}
           path: gitops
 
       - name: Update image
