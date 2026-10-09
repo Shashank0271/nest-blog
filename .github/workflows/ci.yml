@@ -84,7 +84,7 @@ jobs:
           DOCKER_IMAGE_OUTPUT: ${{needs.docker-build-push.outputs.image}}
         run: |
           echo "New image $DOCKER_IMAGE_OUTPUT"
-          echo "Test output $${{ needs.docker-build-push.outputs.testop }}"
+          echo "Test output ${{ needs.docker-build-push.outputs.testop }}"
 
       - name: Check out GitOps repository
         uses: actions/checkout@v4
