@@ -41,6 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       image: ${{ steps.build-and-push.outputs.image }}
+      testop: ${{ steps.build-and-push.outputs.op }}
 
     steps:
       - name: Check out repository
@@ -63,12 +64,14 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 --tag "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" --push .
           echo "image=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "op=Shashank" >> $GITHUB_OUTPUT
 
       - name: Verify step output
         env:
           IMAGE: ${{ steps.build-and-push.outputs.image }}
         run: |
           echo "Step output: '$IMAGE'"
+          echo "Step output op: ${{ steps.build-and-push.outputs.op }}"
           test -n "$IMAGE"
 
   update-gitops:
@@ -81,6 +84,7 @@ jobs:
           DOCKER_IMAGE_OUTPUT: ${{needs.docker-build-push.outputs.image}}
         run: |
           echo "New image $DOCKER_IMAGE_OUTPUT"
+          echo "Test output $${{ needs.docker-build-push.outputs.testop }}"
 
       - name: Check out GitOps repository
         uses: actions/checkout@v4
