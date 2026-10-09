@@ -77,8 +77,10 @@ jobs:
 
     steps:
       - name: Show image
+        env:
+          DOCKER_IMAGE_OUTPUT: ${{needs.docker-build-push.outputs.image}}
         run: |
-          echo "New image ${{ needs.docker-build-push.outputs.image }}"
+          echo "New image $DOCKER_IMAGE_OUTPUT"
 
       - name: Check out GitOps repository
         uses: actions/checkout@v4
