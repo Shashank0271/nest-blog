@@ -22,7 +22,6 @@ async function bootstrap() {
     .setTitle('Blog-App Api')
     .setDescription('Use the BASE API URL as http://localhost:3000/api/v1')
     .setTermsOfService('http://localhost:3000/terms-of-service')
-    .setLicense('MIT License', 'https://opensource.org/license/mit')
     .addServer('http://localhost:3000/api/v1')
     .setVersion('1.0')
     .build();

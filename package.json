@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint:check": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "start": "NODE_OPTIONS=--no-network-family-autoselection nest start",
     "start:dev": "NODE_ENV=development NODE_OPTIONS=--no-network-family-autoselection nest start --watch",
     "start:debug": "NODE_ENV=development NODE_OPTIONS=--no-network-family-autoselection nest start --debug --watch",
@@ -20,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "husky",
     "lint-staged": "lint-staged",
+    "commit": "git-cz",
     "doc": "npx @compodoc/compodoc -p tsconfig.json -s --port 3001 --watch -d ./documentation"
   },
   "lint-staged": {
@@ -61,6 +63,7 @@
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
+    "git-cz": "^4.9.0",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "jest": "^30.0.0",

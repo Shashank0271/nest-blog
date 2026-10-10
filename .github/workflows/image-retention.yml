@@ -1,0 +1,22 @@
+# name: Docker Cleanup
+# on:
+#   schedule:
+#     - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM UTC
+#   workflow_dispatch:  # Allow manual trigger
+#   push:
+
+
+# jobs:
+#   clean:
+#     runs-on: ubuntu-latest
+#     name: Delete old container images
+
+#     steps:
+#       - name: Delete old container images
+#         uses: snok/container-retention-policy@v3.1.0
+#         with:
+#           account: user
+#           token: ${{ secrets.PAT }}
+#           image-names: nest-blog-app
+#           cut-off: 1h
+#           dry-run: true
