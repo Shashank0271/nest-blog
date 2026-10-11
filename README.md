@@ -4,4 +4,5 @@
 
 <img width="1916" height="948" alt="Screenshot 2026-10-10 095259" src="https://github.com/user-attachments/assets/ec7039f7-bab2-4d61-8bf1-aa2da516c4ae" />
 
-<img width="1051" height="447" alt="Screenshot 2026-10-10 095245" src="https://github.com/user-attachments/assets/d31ceb00-5906-4e19-940e-07a6c13be2d3" />
+<img width="1066" height="380" alt="Screenshot 2026-10-07 202317" src="https://github.com/user-attachments/assets/010f93f8-cd41-4163-9fa4-51c49ef18dd8" />
+
