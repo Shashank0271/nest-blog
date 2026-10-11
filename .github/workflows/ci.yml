@@ -39,7 +39,7 @@ jobs:
 
   docker-build-push:
     runs-on: ubuntu-latest
-    needs: lint-and-bulid
+    needs: lint-and-build
     outputs:
       image: ${{ steps.build-and-push.outputs.image }}
 
@@ -72,7 +72,7 @@ jobs:
   update-gitops:
     runs-on: ubuntu-latest
     needs: docker-build-push
-    if: github.ref == 'refs/head/master'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Check out GitOps repository
