@@ -22,8 +22,8 @@ async function bootstrap() {
     .setTitle('Blog-App Api')
     .setDescription('Use the BASE API URL as http://localhost:3000/api/v1')
     .setTermsOfService('http://localhost:3000/terms-of-service')
-    .addServer('http://localhost:3000/api/v1')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

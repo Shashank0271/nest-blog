@@ -22,7 +22,7 @@ export class PaginationProvider {
 
     const totalItems = await repository.count();
     const totalPages = Math.ceil(totalItems / limit);
-    const hasNext = page === totalPages;
+    const hasNext = page < totalPages;
 
     const data = await repository.find({
       skip: (page - 1) * limit,

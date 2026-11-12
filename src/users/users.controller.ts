@@ -6,12 +6,12 @@ import {
   Param,
   Patch,
   Query,
-  SetMetadata,
   UseInterceptors,
   ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { CreateUserDto, CreateUsersDto } from './dtos/create-user.dto';
 import {
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiOperation,
@@ -26,13 +26,16 @@ import {
   StandardResponseType,
 } from 'src/common/swagger/response-types';
 import { User } from './entities/user.entity';
+import { Public } from 'src/auth/decorators/public.decorator';
 
+@ApiBearerAuth()
 @Controller('/api/v1/users')
 @ApiTags('Users')
 export class UsersController {
   constructor(private userService: UsersService) {}
 
   @Post()
+  @Public()
   @ApiOperation({
     summary: 'creates the user with required parameters',
   })
@@ -66,7 +69,6 @@ export class UsersController {
     description: 'fetched user schema of required userid',
     type: StandardResponseType(User),
   })
-  @SetMetadata('authType', 'none')
   public getUser(@Param('uid') uid: number) {
     return this.userService.getUser(uid);
   }
